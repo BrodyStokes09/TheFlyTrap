@@ -10,16 +10,15 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-// import tweetsData from "./data/tweets.json"
 import type { Tweet } from "./types/tweets"
+import { useState, useEffect } from "react";
 import { supabase } from "./utils/supabase";
-
 
 function App() {
   // Tweets is the current list of tweets shown
   // set tweets is how React updates all instances
   // We are starting with tweets from json file
-  const [tweets, setTweets] = useState<Tweet[]>([])
+  const [tweets, setTweets] = useState<Tweet[]>([]);
 
   useEffect(() => {
   async function load() {
@@ -32,8 +31,8 @@ function App() {
     else setTweets(data || []);
   }
 
-  load();
-}, []);
+    load();
+  }, []);
 
   // input is what is typed in the box, setInput is how we update it
   const [input, setInput] = useState("");
@@ -44,7 +43,7 @@ function App() {
     if(!input.trim()) return;
     const newTweet: Tweet = {
       id: Date.now(),
-      name: "Bob Meyers",
+      name: "JoeSmoe",
       username: "@you",
       createdAt: new Date().toISOString(),
       text: input.trim(),
